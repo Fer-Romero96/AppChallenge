@@ -1,11 +1,14 @@
 package edu.itesm.djs
 
+import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.djs_renglon.*
 import kotlinx.android.synthetic.main.djs_renglon.estilo_dj
@@ -24,14 +27,10 @@ class DjFragment : Fragment() {
 
     private val args by navArgs<DjFragmentArgs>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dj, container, false)
     }
@@ -45,11 +44,25 @@ class DjFragment : Fragment() {
         plot_dj.text = args.dj.plot
 
         // Toast
-        val text = args.dj.secret
+        val text = "Playing: " + args.dj.secretString
         val duration = Toast.LENGTH_LONG
 
         val toast = Toast.makeText(context, text, duration)
         toast.show()
 
+        val timer = object: CountDownTimer(13000, 500) {
+            var mediaPlayer: MediaPlayer? = MediaPlayer.create(context, args.dj.secretSong)
+            override fun onTick(millisUntilFinished: Long) {
+                mediaPlayer?.start() // no need to call prepare(); create() does that for you
+            }
+
+            override fun onFinish() {
+                mediaPlayer?.stop()
+                mediaPlayer?.reset()
+
+            }
+        }
+
+        timer.start()
     }
 }

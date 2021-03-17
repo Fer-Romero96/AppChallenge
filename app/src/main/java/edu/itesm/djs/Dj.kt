@@ -9,4 +9,5 @@ data class Dj(val picture: Int,
               val origin: String,
               val style: String,
               val plot: String,
-              val secret: String) : Parcelable
+              val secretSong: Int,
+              val secretString: String) : Parcelable
