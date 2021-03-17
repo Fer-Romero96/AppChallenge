@@ -21,4 +21,21 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logos" />
 
+    <TextView
+        android:id="@+id/discJockey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:text="Disc-Jockey Favoritos"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.406" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/djsFragment">
+    <fragment
+        android:id="@+id/djsFragment"
+        android:name="edu.itesm.djs.DjsFragment"
+        android:label="fragment_djs"
+        tools:layout="@layout/fragment_djs" >
+        <action
+            android:id="@+id/action_djsFragment_to_djFragment"
+            app:destination="@id/djFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/djFragment"
+        android:name="edu.itesm.djs.DjFragment"
+        android:label="fragment_dj"
+        tools:layout="@layout/fragment_dj" >
+        <argument
+            android:name="dj"
+            app:argType="edu.itesm.djs.Dj" />
+    </fragment>
+</navigation>
